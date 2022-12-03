@@ -1,0 +1,98 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+.canvas * {
+    position: inherit;
+    overflow: visible;
+    pointer-events: none;
+}
+#background, #moires {
+    width: 100%;
+    height: 100%;
+}
+#scale {
+    top: 1%;
+    width: 100%;
+    height: 98%;
+}
+#platform {
+    width: 100%;
+    height: 85%;
+}
+#fraction {
+    left: 1%;
+    height: 75%;
+    width: 4%;
+}
+#fractionCount {
+    left: 1%;
+    transform: translate3d(0%, -100%, 0);
+}
+#blockset {
+    width: 100%;
+    height: 75%;
+}
+#pan {
+    top: 75%;
+    left: 5%;
+    width: 90%;
+    height: 25%;
+}
+#title {
+    top: 50%;
+    left: 5%;
+    width: 90%;
+    height: 25%;
+}
+#body, #hand {
+    top: 75%;
+    left: 50%;
+    height: 25%;
+    transform: translate3d(-50%, 0%, 0);
+}
+#formula, #result {
+    top: 75%;
+    width: 50%;
+}
+#formula {
+    height: 25%;
+}
+#result, #averaging {
+    left: 75%;
+    transform: translate3d(-50%, 0%, 0);
+}
+#result {
+    height: 20%;
+    cursor: pointer;
+    pointer-events: auto;
+}
+#averaging {
+    top: 95%;
+    width: 40%;
+    height: 5%;
+    text-align: right;
+    opacity: 0.3;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: opacity 0.5s ease;
+}
+.blocks, #grid, #pattern, #calcBuffer, #increment, #moireSource {
+    visibility: hidden;
+}
+#pattern {
+    width: 1px;
+}
+#nullMenu {
+    background-color: hsl(260, 75%, 80%);
+}
+#nullLogo {
+    stroke: hsl(50, 75%, 30%);
+}

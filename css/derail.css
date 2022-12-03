@@ -1,0 +1,58 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    overflow: hidden;
+}
+.section {
+    position: inherit;
+    mix-blend-mode: exclusion;
+    transition: opacity 0.5s ease-in-out;
+    cursor: pointer;
+}
+#sectroot, #sprocketroot {
+    visibility: hidden;
+}
+.link {
+    position: inherit;
+    width: 600px;
+    height: 231px;
+    background-image: url(../img/linksprite.png);
+}
+.outer {
+    background-position: 0% 0%;
+}
+.inner {
+    background-position: 0% 33.3%;
+}
+.rivet {
+    background-position: 0% 66.7%;
+}
+.tooth {
+    background-position: 0% 100%;
+    pointer-events: none;
+}
+.sprocket {
+    position: inherit;
+    mix-blend-mode: difference;
+    /*user-select: none;*/
+    opacity: 0;
+}
+.face {
+    position: inherit;
+    height: 720px;
+    width: 720px;
+    background-image: url(../img/sprockets.png);
+}
+#nullMenu {
+    background-color: olive;
+}
+#nullLogo {
+    stroke: black;
+}

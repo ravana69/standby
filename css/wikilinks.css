@@ -1,0 +1,176 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: "Times New Roman", Times, serif;
+    user-select: none;
+    background: radial-gradient(circle,firebrick,maroon);
+    overflow: hidden;
+}
+#perspectiveFrame {
+    position: inherit;
+    perspective: 5000px;
+    width: 100%;
+    height: 100%;
+}
+#threeD {
+    position: inherit;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+}
+.wordframe {
+    position: inherit;
+    transform-style: preserve-3d;
+    top: 50%;
+    left: 50%;
+    visibility: hidden;
+}
+.word {
+    position: inherit;
+    left: 50%;
+    font-size: 50px;
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0;
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
+    transform: translate3d(-50%,-50%,0) rotateX(90deg);
+    transition: opacity 0.5s ease, color 0.2s ease;
+}
+/*#test3dframe {
+    position: inherit;
+    transform-style: preserve-3d;
+    top: 50%;
+    left: 50%;
+    height: 5000px;
+    width: 5000px;
+    opacity: 0.5;
+    background-image: url(../img/PerspectiveTest.png);
+    background-size: contain;
+    transform: translate3d(-50%,-50%,0) rotateX(-97deg) rotateZ(0deg);
+    visibility: hidden;
+}*/
+#test3d {
+    position: inherit;
+    left:50%;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
+    transform: translate3d(-50%,-50%,0) rotateX(90deg);
+}
+#globeframe {
+    position: inherit;
+    transform-style: preserve-3d;
+    top: 50%;
+    left: 50%;
+    animation-name: globeappear, globerotate;
+    animation-duration: 5s, 30s;
+    animation-timing-function: ease-in, linear;
+    animation-iteration-count: 1, infinite;
+}
+#globe {
+    position: inherit;
+    height: 60px;
+    width: 60px;
+    transform: translate(-50%, -50%);
+}
+#h0, #h1, #h2 {
+    stroke: none;
+    fill: white;
+    opacity: 0.1;
+}
+#halo0 {
+    position: inherit;
+    height: inherit;
+    width: inherit;
+}
+#halo1 {
+    position: inherit;
+    height: inherit;
+    width: inherit;
+    left: -20%;
+    animation-name: globerotate;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#halo2 {
+    position: inherit;
+    height: inherit;
+    width: inherit;
+    top: -20%;
+    animation-name: globerotate;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#globe0 {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(../img/asteroids.png);
+    animation-name: globespinh;
+    animation-duration: 2s;
+    animation-timing-function: steps(19);
+    animation-iteration-count: infinite;
+}
+#globe1 {
+    position: inherit;
+    cursor: pointer;
+    height: 100px;
+    width: 103px;
+    top: 50%;
+    left: 50%;
+    transform: scale(0.48) translate(-102%, -92%) rotate(30deg);
+    background-repeat: no-repeat;
+    background-image: url(../img/WikipediaLogo.svg);
+    opacity: 0.3;
+    transition: opacity 1s ease-in;
+}
+#pinwheel {
+    position: inherit;
+    height: 60px;
+    width: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-45%,-45%,0);
+    background-image: url(../img/pinwheel.png);
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+#acknowlegement {
+    position: inherit;
+    left: 0%;
+    bottom: 0%;
+    font-size: 10px;
+    color: white;
+    transition: opacity 2s ease;
+}
+@keyframes globespinh {
+    from { background-position-x: -0px; }
+    to { background-position-x: -1216px; }
+}
+@keyframes globeappear {
+    from { opacity: 0; transform: scale(0.1);}
+    to { opacity: 1; transform: scale(1.0);}
+}
+@keyframes globerotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+#nullMenu {
+    background-color: orange;
+}
+#nullLogo {
+    stroke: green;
+}

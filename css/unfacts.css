@@ -1,0 +1,219 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.canvas * {
+    position: inherit;
+    pointer-events: none;
+}
+#axis {
+    overflow: visible;
+    transform-origin: var(--axisTransformOrigin);
+    transform: var(--axisTransform);
+    transition: var(--axisTransition);
+}
+.pages, .backgrounds, .names, .descriptions, .details, .clauses, .categories, .categoryBoxes li, #status, #statusDescription, #shadow {
+    opacity: 0;
+}
+.pages {
+    width: var(--pageWidth);
+    height: var(--pageHeight);
+    font-family: sans-serif;
+    font-size: 2vmin;
+    transform-origin: var(--axisTransformOrigin);
+    transform: var(--pageTransform);
+}
+.freezeFrames {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 5px solid;
+    filter: blur(5px);
+}
+.canvas.freeze .backgrounds {
+    opacity: 0;
+}
+.canvas.freeze .details {
+    transform: scale(0.9);
+}
+.backgrounds {
+    left: var(--backgroundLeft);
+    top: var(--backgroundTop);
+    width: var(--backgroundWidth);
+    height: var(--backgroundHeight);
+    transition: opacity 500ms ease-in;
+}
+.backgrounds.revealed {
+    opacity: 1;
+}
+.titles, .details {
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 1em;
+}
+.titles {
+    max-height: 100%;
+    padding-top: 5em;
+    color: var(--titleColor);
+    transition: transform 500ms ease-in, var(--titleTransition);
+}
+.names, .descriptions, .paragraphs, .categories {
+    position: relative;
+}
+.names {
+    font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+    font-size: 5em;
+    margin-bottom: 0.1em;
+    border-bottom: 1px solid;
+    transition: var(--nameTransition);
+}
+.descriptions {
+    font-size: 2em;
+    transition: var(--descriptionTransition);
+}
+.details {
+    height: 100%;
+    padding-bottom: 3em;
+    color: var(--detailColor);
+    transition: transform 500ms ease-in, var(--detailTransition);
+}
+.details.revealed {
+    pointer-events: auto;
+}
+.details.revealed img {
+    pointer-events: auto;
+    cursor: pointer;
+}
+.paragraphs {
+    box-sizing: border-box;
+    max-height: 100%;
+    overflow: hidden;
+}
+.figures {
+    display: var(--figureDisplay);
+    float: var(--figureFloat);
+    margin: 1em;
+    border: 1px solid;
+    background-color: hsla(0, 0%, 50%, 0.1);
+    transition: var(--figureTransition);
+}
+.captions {
+    caption-side: bottom;
+    font-size: calc(10px + 0.3em);
+    text-align: center;
+    margin-top: -0.5em;
+    margin-bottom: 0.5em;
+}
+.figures > img {
+    margin: 1em;
+}
+img {
+    max-height: var(--imgMaxHeight);
+    width: auto;
+}
+.clauses {
+    font-size: 3em;
+    white-space: pre-line;
+    color: var(--clauseColor);
+    transition: var(--clauseTransition);
+}
+.clauses:first-of-type {
+    font-weight: bold;
+}
+.categories {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: calc(10px + 0.3em);
+    height: 1em;
+    padding: 1em;
+    transition: var(--categoryTransition);
+    visibility: hidden;
+}
+.categories.revealed {
+    visibility: visible;
+}
+.categoryBoxes {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: -0.5em;
+    height: 1em;
+    text-align: left;
+    vertical-align: middle;
+    padding: 0.5em;
+    border: 1px solid;
+    background-color: hsla(0, 0%, 50%, 0.1);
+}
+.categoryBoxes li:first-child {
+    padding-left: 0.25em;
+    border-left: 0;
+}
+.categoryBoxes li {
+    display: none;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-left: 1px solid;
+    transition: var(--categoryLinkTransition);
+}
+.categoryBoxes li.revealed {
+    display: inline;
+    pointer-events: auto;
+    cursor: pointer;
+}
+#shadow {
+    top: 50%;
+    left: 50%;
+    filter: blur(15px);
+    transform: translate3d(-50%, -50%, 0) var(--shadowTransform);
+    transition: var(--shadowTransition);
+}
+#shadow.revealed {
+    opacity: 1;
+}
+#status {
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: 2em;
+    font-size: 1em;
+    color: hsl(0, 0%, 50%);
+    pointer-events: auto;
+    transition: opacity 100ms linear;
+}
+#status.reveal {
+    opacity: 0.7;
+}
+#status.reveal:hover, #status.reveal:hover > li {
+    opacity: 1;
+}
+#statusDescription {
+    display: inline;
+    top: -25%;
+    position:relative;
+    text-align: right;
+    padding-right: 0.5em;
+    transition: opacity 100ms linear;
+}
+#WikiLogo {
+    display: inline;
+    position:relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+#imagePool > img {
+    visibility: hidden;
+}
+#nullMenu {
+    background-color: hsl(175, 100%, 50%);
+    stroke: white;
+}

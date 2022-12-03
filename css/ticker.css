@@ -1,0 +1,169 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: "Times New Roman", Times, serif;
+    user-select: none;
+    visibility: hidden;
+    overflow: hidden;
+}
+#night {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+.starfield {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s linear;
+}
+#starfieldRoot {
+    opacity: 0;
+}
+.star {
+    position: absolute;
+    background-image: radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 0%, 0) 10%);
+    transform: translate3d(-50%, -50%, 0);
+}
+#sky {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    transition: opacity 0.5s linear;
+}
+#glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+.sol {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+.moon {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    background-image: url(../img/moonphases.png);
+    transform: translate3d(-50%, -50%, 0px);
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+#perspectiveFrame {
+    position: inherit;
+    width: inherit;
+    height: inherit;
+    perspective: 1000px;
+}
+#threeD {
+    position: inherit;
+    width: inherit;
+    height: inherit;
+    transform-style: preserve-3d;
+}
+#clockFace {
+    position: inherit;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid blue;
+}
+#clockFaceBorder {
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    opacity: 0.8;
+    transform: translate3d(-50%, -50%, 0);
+}
+#hourHand {
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 1500px;
+    background-image: url(../img/clockhands.png);
+    background-position: 0% 0%;
+    transform-origin: 50% 50%;
+}
+#minuteHand {
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 1500px;
+    background-image: url(../img/clockhands.png);
+    background-position: 50% 0%;
+    transform-origin: 50% 50%;
+}
+#secondHand {
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 1500px;
+    background-image: url(../img/clockhands.png);
+    background-position: 100% 0%;
+    transform-origin: 50% 50%;
+}
+.clockMark {
+    position: inherit;
+    overflow: visible;
+    height: 1%;
+    width: 1%;
+    border-radius: 50%;
+    background-color: black;
+    transform: translate3d(-50%, -50%, 1px);
+    visibility: hidden;
+}
+.hourDigit {
+    position: inherit;
+    transform: translate3d(-50%, -50%, 1px);
+    visibility: hidden;
+}
+#windowShade {
+    height: 100%;
+    overflow: visible;
+    transform: scale(2) translateZ(-1000px);
+}
+#windowFrame {
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    overflow: visible;
+}
+#windowPlane {
+    position: inherit;
+    transform-style: preserve-3d;
+    overflow: visible;
+    transition: transform 0.9s ease-out;
+}
+.window {
+    position: inherit;
+    width: 120px;
+    height: 120px;
+    background-image: url(../img/windowsprite.png);
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+#nullMenu {
+    background-color: blue;
+}
+#nullLogo {
+    stroke: white;
+}

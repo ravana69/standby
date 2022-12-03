@@ -1,0 +1,119 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    transition: opacity 300ms ease-out;
+}
+#source {
+    top: 90%;
+    left: 50%;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 1000ms ease-out;
+    opacity: 0;
+    z-index: 1;
+}
+.canvas * {
+    position: inherit;
+    overflow: visible;
+    pointer-events: none;
+}
+.year {
+    height: 10%;
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 500ms ease-in-out;
+    z-index: 1;
+}
+.yearVisible {
+    opacity: 0.7;
+}
+.yearVisible:hover {
+    opacity: 1;
+}
+.yearTop {
+    width: 100%;
+    height: 50%;
+}
+.yearBottom {
+    top: 50%;
+    width: 100%;
+    height: 50%;
+}
+.allowIncrement {
+    pointer-events: auto;
+    cursor: n-resize;
+}
+.allowDecrement {
+    pointer-events: auto;
+    cursor: s-resize;
+}
+.populace {
+    transition: background-color 500ms ease, transform 500ms ease;
+}
+.populace:hover > .smallLegend  {
+    opacity: 1;
+}
+.populace.smallLegend {
+    overflow: hidden;
+}
+.populace.smallLegend:hover {
+    overflow: visible;
+}
+.populated {
+    pointer-events: auto;
+    cursor: pointer;
+}
+.populated:hover {
+    background-color: hsla(0, 100%, 100%, 0.1);
+}
+.chartGroup {
+    width: 0%;
+    height: 0%;
+}
+.chart {
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity 500ms ease, transform 500ms ease;
+}
+.legend {
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    z-index: 1;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 500ms ease;
+}
+.populaceLegend {
+    opacity: 1;
+}
+.parentLegend {
+    pointer-events: auto;
+    cursor: pointer;
+    opacity: 0.7;
+}
+.parentLegend:hover {
+    opacity: 1;
+}
+.legend.smallLegend {
+    opacity: 0.6;
+}
+.icon, .pattern {
+    visibility: hidden;
+}
+#nullMenu {
+    background-color: hsl(100, 58%, 84%);
+}
+#nullLogo {
+    stroke: hsl(264, 74%, 50%);
+}

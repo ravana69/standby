@@ -1,0 +1,370 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: linear-gradient(slategray, hsla(106, 57%, 22%, 1));
+}
+.canvas * {
+    position: inherit;
+    /*transition: transform ease-out 1s, opacity ease-in 1s;*/
+}
+#perspectiveFrame {
+    width: inherit;
+    height: inherit;
+    perspective: 1000px;
+}
+#threeD {
+    width: inherit;
+    height: inherit;
+    transform-style: preserve-3d;
+}
+.pennyFrame {
+    visibility: hidden;
+    transform-style: preserve-3d;
+}
+.penny {
+    width: 72px;
+    height: 72px;
+    background-image: url(../img/penny.png);
+    transform: translate3d(-50%, -50%, 0);
+}
+.dollarFrame {
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform-style: preserve-3d;
+    transition: transform ease-out 2s, opacity ease-in 2s;
+}
+.dollar {
+    width: 614px;
+    height: 261px;
+    background-color: rgb(232,235,208);
+    transform: translate3d(-50%, -50%, 0);
+    transform-style: preserve-3d;
+}
+object {
+    opacity: 0;
+    pointer-events: none;
+}
+.group {
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+.mask {
+    overflow: hidden;
+    background-color: rgb(56,56,54);
+    transform: translate3d(-50%, -50%, -2px);
+    opacity: 0;
+}
+.spirograph {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, -1px);
+}
+.shadow {
+    opacity: 0;
+    transition: filter ease-out 0.5s, opacity ease-in 0.5s;
+}
+.centerLeftLeaves {
+    top: 75.0%;
+    left: 39.0%;
+    transform: translate3d(-50%, -50%, 6px) scale(0.55);
+}
+.centerLeftLeavesMask {
+    top: 58.3%;
+    left: 50%;
+    width: 33%;
+    height: 97%;
+    border-radius: 50%;
+    background-image: url(../img/block.svg);
+    background-size: 1% auto;
+    transform: translate3d(-50%, -50%, 4px) scale(0.64);
+    animation: gridScroll 60s linear infinite;
+}
+.centerRightLeaves {
+    top: 75.0%;
+    left: 60.9%;
+    transform: translate3d(-50%, -50%, 6px) scale(0.55);
+}
+.fedSeal {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(0.27);
+}
+.fedSealGroup {
+    top: 49.4%;
+    left: 24.8%;
+    transform: translate3d(-50%, -50%, 6px);
+}
+.innerFrame {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 2px) scale(0.55);
+}
+.leftLeaves1 {
+    transform: translate3d(-71%, -10%, 1px) scale(0.55);
+}
+.leftLeaves2 {
+    transform: translate3d(16.5%, -81%, -1px) scale(0.55);
+}
+.leftLeaves3 {
+    transform: translate3d(-97%, -179%, -1px) scale(0.55);
+}
+.lowerLeftOne {
+    transform: translate3d(-50%, -50%, 0) scale(0.55);
+}
+.lowerLeftShield {
+    transform: translate3d(-50%, -50%, 0) scale(0.55);
+}
+.lowerLeftShieldGroup {
+    top: 80.9%;
+    left: 7.9%;
+    transform: translate3d(-50%, -50%, 6px);
+}
+.lowerLeftShieldMask {
+    top: 80.9%;
+    left: 7.9%;
+    width: 6%;
+    height: 18%;
+    border-radius: 50%;
+    transform: translate3d(-50%, -50%, -1px) scale(0.4);
+    -webkit-clip-path: ellipse(50% at center);
+}
+.lowerRightOne {
+    transform: translate3d(-50%, -44%, 0) scale(0.55);
+}
+.lowerRightShield {
+    transform: translate3d(-50%, -50%, 0) scale(0.55);
+}
+.lowerRightShieldGroup {
+    top: 81.0%;
+    left: 92.0%;
+    transform: translate3d(-50%, -50%, 6px);
+}
+.lowerRightShieldMask {
+    top: 81.9%;
+    left: 92%;
+    width: 6%;
+    height: 17%;
+    border-radius: 50%;
+    transform: translate3d(-50%, -48%, -1px) scale(0.38);
+    -webkit-clip-path: ellipse(50% at center);
+}
+.one {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(0.55);
+}
+.oneGroup {
+    top: 55.5%;
+    left: 74.0%;
+    transform: translate3d(-50%, -50%, 7px);
+}
+.oneDollar {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(0.55);
+}
+.oneDollarGroup {
+    top: 90%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 6px);
+}
+.outerFrame {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 3px) scale(0.55);
+}
+.outerFrameMask {
+    top: 50%;
+    left: 50%;
+    width: 94.2%;
+    height: 88.0%;
+    transform: translate3d(-50%, -50%, 1px);
+}
+.rightLeaves1 {
+    top: 53.2%;
+    left: 92.9%;
+    transform: translate3d(-50%, -50%, 7px) scale(0.55);
+}
+.rightLeaves2 {
+    transform: translate3d(-112%, -60%, -1px) scale(0.55);
+}
+.rightLeaves3 {
+    transform: translate3d(-5%, -147%, -1px) scale(0.55);
+}
+.serialDigit {
+    overflow: hidden;
+    height: 100%;
+    width: 16.5%;
+}
+.serialNumeral {
+    height: 6%;
+    width: 18.3%;
+    transform: translate3d(0%, 0%, 6px);
+    opacity: 0;
+    cursor: pointer;
+}
+.serialNumeral img {
+    height: auto;
+    width: 100%;
+    transform: translate3d(0%, -2%, 6px);
+    transition: transform ease-in-out 1s;
+}
+.serialNumeral0 {
+    top: 29%;
+    left: 65.1%;
+}
+.serialNumeral1 {
+    top: 63.5%;
+    left: 18%;
+}
+.treasurySeal {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(0.55);
+}
+.treasurySealGroup {
+    top: 56.3%;
+    left: 73.7%;
+    transform: translate3d(-50%, -50%, 6px);
+}
+.unitedStates {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(0.55);
+}
+.unitedStatesGroup {
+    top: 17.5%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 6px);
+}
+.upperLeftOne {
+    transform: translate3d(-50%, -83%, 0) scale(0.55);
+}
+.upperLeftShield {
+    transform: translate3d(-50%, -50%, 0) scale(0.55);
+}
+.upperLeftShieldGroup {
+    top: 37.9%;
+    left: 8.5%;
+    transform: translate3d(-50%, -50%, 6px);
+}
+.upperLeftShieldMask {
+    top: 27.1%;
+    left: 8.5%;
+    border-radius: 50%;
+    transform: translate3d(-50%, -67%, -1px)  scale(0.50);
+    -webkit-clip-path: ellipse(50% at center);
+}
+.upperRightOne {
+    transform: translate3d(-50%, -55%, 0) scale(0.55);
+}
+.upperRightShield {
+    transform: translate3d(-50%, -50%, 0) scale(0.55);
+}
+.upperRightShieldGroup {
+    top: 27.9%;
+    left: 91.7%;
+    transform: translate3d(-50%, -50%, 6px);
+}
+.upperRightShieldMask {
+    top: 28.4%;
+    left: 91.6%;
+    transform: translate3d(-50%, -50%, -1px) scale(0.50);
+    -webkit-clip-path: polygon(83% 0%, 98% 13%, 89% 46%, 100% 72%, 82% 78%, 82% 87%, 50% 100%, 18% 87%, 18% 78%, 0% 72%, 13% 46%, 3% 12%, 20% 0%);
+}
+.washington {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(0.64);
+}
+.washingtonBlink {
+    top: 28.4%;
+    left: 60%;
+    transform: translate3d(-50%, -50%, 0) scale(0.64);
+    transition: opacity ease 0.1s;
+}
+.washingtonGroup {
+    top: 57.5%;
+    left: 50.4%;
+    transform: translate3d(-50%, -50%, 5px);
+}
+.washingtonDC {
+    top: 40.5%;
+    left: 74.2%;
+    transform: translate3d(-50%, -50%, 6px) scale(0.21);
+}
+.washingtonFrame {
+    top: 60.0%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 6px) scale(0.55);
+}
+.washingtonFrameMask {
+    top: 88.7%;
+    left: 50%;
+    height: 9.5%;
+    width: 40%;
+    background-image: url(../img/oneDollarBackground.svg);
+    background-size: 14% auto;
+    transform: translate3d(-50%, -50%, 5px);
+    animation: gridScroll 60s linear infinite;
+}
+.spiroAnimate0 {
+    animation: spiro0 60s ease-in-out infinite alternate 0.5s;
+}
+.spiroAnimate1 {
+    animation: spiro1 90s ease-in-out infinite alternate 0.5s;
+}
+.spiroAnimate2 {
+    animation: spiro2 90s ease-in-out infinite alternate 0.5s;
+}
+.spiroAnimate3 {
+    animation: spiro2 90s ease-in-out infinite alternate-reverse 0.5s;
+}
+.spiroAnimate4 {
+    animation: spiro3 90s ease-in-out infinite alternate 0.5s;
+}
+.spiroAnimate5 {
+    animation: spiro3 90s ease-in-out infinite alternate-reverse 0.5s;
+}
+@keyframes gridScroll {
+    from { background-position: 0% 0%; }
+    to { background-position: 0% 99%; }
+}
+@keyframes pennyspin0 {
+    from { background-position: 0%; }
+    to { background-position: 200%; }
+}
+@keyframes pennyspin1 {
+    from { transform:  translate3d(-50%, -50%, -1px) scale(0, 1); }
+    to { transform:  translate3d(-50%, -50%, -1px) scale(1, 1); }
+}
+@keyframes spiro0 {
+    from { transform: translate3d(-50%, -50%, -1px) scale(0.4, 0.5) rotateZ(0deg); }
+    to { transform: translate3d(-50%, -50%, -1px) scale(0.3, 0.35) rotateZ(360deg); }
+}
+@keyframes spiro1 {
+    from { transform: translate3d(-50%, -50%, -1px) scale(0.3, 0.45) rotateZ(0deg); }
+    to { transform: translate3d(-50%, -50%, -1px) scale(0.4, 0.6) rotateZ(-360deg); }
+}
+@keyframes spiro2 {
+    from { transform: translate3d(-50%, -50%, -1px) scale(1, 0.4) rotateZ(0deg); }
+    to { transform: translate3d(-50%, -50%, -1px) scale(1, 0.4) rotateZ(-360deg); }
+}
+@keyframes spiro3 {
+    from { transform: translate3d(-50%, -50%, -1px) scale(0.3, 0.7) rotateZ(0deg); }
+    to { transform: translate3d(-50%, -50%, -1px) scale(0.3, 0.7) rotateZ(360deg); }
+}
+#nullMenu {
+    background-color: yellowgreen;
+}
+#nullLogo {
+    stroke: purple;
+}

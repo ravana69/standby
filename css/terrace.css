@@ -1,0 +1,54 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.canvas * {
+    position: inherit;
+    overflow: hidden;
+    pointer-events: none;
+}
+#urcube {
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+#backPivot {
+    top: 50%;
+    left: 50%;
+    overflow: visible;
+}
+#background {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+#foreground {
+    width: 100%;
+    height: 100%;
+    border: 25px solid;
+    border-image: url(../img/terraceBorder.png) 33% round;
+    box-sizing: border-box;
+    pointer-events: auto;
+    cursor: default;
+    background-color: black;
+    opacity: 1;
+    transition: opacity ease-in-out 3s;
+}
+#colorCircle {
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity ease-in 0.5s;
+}
+#nullMenu {
+    background-color: red;
+}
+#nullLogo {
+    stroke: lightblue;
+}

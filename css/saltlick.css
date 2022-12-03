@@ -1,0 +1,184 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.canvas * {
+    position: inherit;
+    overflow: visible;
+    pointer-events: none;
+}
+#displayRoot {
+    --sliderHeight: 0.5vh;
+    --thumbWidth: 4vh;
+    --thumbBorder: 1px solid black;
+    --sliderBackground: white;
+}
+#output, #background {
+    width: 100%;
+    height: 100%;
+}
+#output {
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+}
+#letterFrame {
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+    animation: var(--letterAnimation);
+}
+.begin > #output, .begin > #letterFrame {
+    opacity: 1;
+}
+@keyframes tumble {
+    0% { color: white; transform: translate3d(-50%, -50%, 0) rotate3d(1, 1, 1, 0); }
+    25% { color: hsl(0, 0%, 20%); transform: translate3d(-50%, -50%, 0) rotate3d(1, 1, 1, 90deg); }
+    50% { color: hsl(0, 0%, 50%); transform: translate3d(-50%, -50%, 0) rotate3d(1, 1, 1, 180deg); }
+    75% { color: hsl(0, 0%, 20%); transform: translate3d(-50%, -50%, 0) rotate3d(1, 1, 1, 270deg); }
+    100% { color: white; transform: translate3d(-50%, -50%, 0) rotate3d(1, 1, 1, 360deg); }
+}
+#letter {
+    transform-origin: center center;
+    color: inherit;
+    font-family: "Times New Roman", "Times", "serif";
+    pointer-events: auto;
+    cursor: default;
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+    transform: translate3d(-50%, -50%, 0);
+}
+.reveal #letter, #letter:hover {
+    opacity: 1;
+}
+#pattern, #patternMix {
+    visibility: hidden;
+}
+#sliderStack {
+    bottom: 0;
+    width: 100%;
+}
+.sliderFrames {
+    width: 100%;
+    height: var(--sliderHeight);
+    box-sizing: border-box;
+    margin: 4vh 0;
+    padding: 0 4vh;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+}
+.reveal .sliderFrames {
+    opacity: 0.5;
+}
+.reveal .sliderFrames:hover {
+    opacity: 1;
+}
+.sliders {
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    cursor: pointer;
+    -webkit-appearance: none;
+    transform: translateY(-50%);
+}
+.sliders:focus {
+    outline: none;
+}
+.sliders::-webkit-slider-thumb {
+	-webkit-appearance: none;
+    box-sizing: border-box;
+    width: var(--thumbWidth);
+    height: var(--thumbWidth);
+    border: var(--thumbBorder);
+    border-radius: 50%;
+    background: var(--sliderBackground);
+    transform: translateY(-50%);
+}
+.sliders::-moz-range-thumb {
+    box-sizing: border-box;
+    width: var(--thumbWidth);
+    height: var(--thumbWidth);
+    border: var(--thumbBorder);
+    border-radius: 50%;
+    background: var(--sliderBackground);
+}
+.sliders::-ms-thumb {
+    box-sizing: border-box;
+    width: var(--thumbWidth);
+    height: var(--thumbWidth);
+    border: var(--thumbBorder);
+    border-radius: 50%;
+    background: var(--sliderBackground);
+}
+.sliders::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    background: var(--sliderBackground);
+}
+.sliders::-moz-range-track {
+    width: 100%;
+    height: 100%;
+    background: var(--sliderBackground);
+}
+.sliders::-ms-track {
+    width: 100%;
+    height: 100%;
+    background: var(--sliderBackground);
+}
+#audioState {
+    right: 5vmin;
+    top: 5vmin;
+    width: 10vmin;
+    height: 10vmin;
+    background-color: white;
+    border-radius: 15%;
+    opacity: 0;
+    z-index: 2;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: opacity 500ms ease-in;
+}
+#audioState.waiting {
+    pointer-events: none;
+    cursor: wait;
+}
+.reveal #audioState {
+    opacity: 0.4;
+}
+.reveal #audioState:hover {
+    opacity: 1;
+}
+.audioImages {
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, -50%);
+}
+#audioState.active > #audioMuted {
+    visibility: hidden;
+}
+#audioState:not(.active) > #audioUnmuted {
+    visibility: hidden;
+}
+#background {
+    background: var(--backgroundGradient);
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+#audioState.active ~ #background {
+    opacity: 0;
+}
+#nullMenu {
+    background-color: hsl(263, 100%, 64%);
+    stroke: white;
+}

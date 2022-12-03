@@ -1,0 +1,90 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#displayRoot {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+    --pageRotate: rotate(0);
+    --pageTranslate: translate(0, 0);
+    --pageTransformTransition: transform 0s;
+}
+.canvas * {
+    position: inherit;
+    overflow: visible;
+}
+#veil {
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    opacity: 1;
+    z-index: 2;
+    transition: opacity 1s ease-out 500ms;
+}
+#newsapi {
+    right: 5%;
+    bottom: 5%;
+    width: 15%;
+}
+#newsapi img {
+    bottom: 100%;
+    width: 100%;
+    height: auto;
+}
+#shade {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: var(--shadeBackground);
+}
+#oneInch, #pageRoot, #drawSheetRoot, #foldRoot, #pointRoot, .columns, #picturePool, #trimRotated, #beta {
+    visibility: hidden;
+}
+#oneInch {
+    width: 1in;
+}
+.pages {
+    left: 50%;
+    top: 50%;
+    transform: var(--pageRotate) var(--pageTranslate);
+    transition: opacity 300ms ease-out, var(--pageTransformTransition);
+    --foldRotate: rotate(0);
+    --foldScale: scale(1, 1);
+}
+.pages.nextPageDrawing .papers {
+    pointer-events: auto;
+    cursor: pointer;
+}
+.drawSheets {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+.folds {
+    z-index: 1;
+    transform: var(--foldRotate) var(--foldScale);
+}
+.transparent {
+    opacity: 0;
+}
+@keyframes foldOpacity1 {
+    0% { opacity: 0; }
+    50% { opacity: 1;}
+    51% { opacity: 0;}
+    100% { opacity: 0; }
+}
+@keyframes foldOpacity2 {
+    0% { opacity: 0; }
+    49% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@keyframes foldOpacity3 {
+    0% { opacity: 0; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}

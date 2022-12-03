@@ -1,0 +1,48 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.canvas * {
+    position: inherit;
+    overflow: visible;
+    pointer-events: none;
+    cursor: pointer;
+}
+#street, #support {
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+#signal {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: auto;
+}
+#frame {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    border-style: solid;
+    border-color: hsla(0, 0%, 100%, 0.25);
+    border-width: 2px 0px 0px 1px;
+}
+.symbol {
+    pointer-events: auto;
+    transform: translate3d(-50%, -50%, 0);
+}
+#lights, #icon, #test, #pixels, #walkIcon, #haltIcon {
+    visibility: hidden;
+}
+#nullMenu {
+    background-color: hsl(40, 75%, 60%);
+}
+#nullLogo {
+    stroke: hsl(95, 75%, 40%);
+}

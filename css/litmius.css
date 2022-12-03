@@ -1,0 +1,69 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.canvas * {
+    position: inherit;
+    overflow: visible;
+    pointer-events: none;
+}
+#background, #backgroundPlane {
+    width: 100%;
+    height: 100%;
+}
+#frame {
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform-style: preserve-3d;
+    transform: var(--frameRotate0);
+    transition: opacity 1s ease-in;
+}
+@keyframes frameRotate {
+    0% { transform: var(--frameRotate0); }
+    100% { transform: var(--frameRotate100); }
+}
+#strip {
+    transform-style: preserve-3d;
+    transform: var(--stripRotate0);
+}
+@keyframes stripRotate {
+    0% { transform: var(--stripRotate0); }
+    10% { transform: var(--stripRotate0); }
+    90% { transform: var(--stripRotate100); }
+    100% { transform: var(--stripRotate100); }
+}
+.sections {
+    transform-style: preserve-3d;
+    pointer-events: inherit;
+    cursor: inherit;
+}
+.panes {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    pointer-events: inherit;
+    cursor: inherit;
+    transform: var(--paneTransform);
+    transition: transform 10s ease-in-out;
+    background: var(--paneBackgroundColor);
+}
+.rearPane {
+    transform: var(--rearPaneTransform);
+    background: var(--rearPaneBackgroundColor);
+}
+#content, #paneRoot {
+    visibility: hidden;
+}
+#background, #content, #paneRoot {
+    transform: var(--backgroundTransform);
+}
+#nullMenu {
+    background-color: hsl(353, 93%, 42%);
+    stroke: white;
+}

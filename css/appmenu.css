@@ -1,0 +1,65 @@
+#nullMenu {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 9997;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+#nullMenu * {
+    position: inherit;
+}
+.hideMenu {
+    opacity: 0;
+    transform: translate3d(0%, -50%, 0) scale(0.3);
+}
+.revealMobileMenu {
+    opacity: 0.6;
+    transform: translate3d(-20%, -50%, 0) scale(1);
+}
+.revealMenu {
+    opacity: 0.6;
+    transform: translate3d(-40%, -50%, 0) scale(1);
+}
+.fullMenu {
+    opacity: 1;
+    transform: translate3d(-66%, -50%, 0) scale(1.3);
+}
+#nullLogo {
+    top: 50%;
+    left: 50%;
+    height: 55%;
+    width: 55%;
+}
+.altMenuLogos {
+    left: 75%;
+    height: 40%;
+    width: 40%;
+    opacity: 0.4;
+}
+#randomLogo {
+    top: 100%;
+}
+.menuLogoSvgs {
+    height: 100%;
+    width: 100%;
+}
+#nullLogo, .altMenuLogos {
+    transform-origin: center;
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+.altMenuLogos:hover, #nullMenu.revealMobileMenu .altMenuLogos {
+    opacity: 1;
+}
+#nullMenu.revealMobileMenu #nullLogo {
+    pointer-events: none;
+}
+#nullMenu.fullMenu #nullLogo {
+    pointer-events: auto;
+    transform: translate3d(-75%, -50%, 0) rotate(-180deg);
+}
+#nullMenu.fullMenu .altMenuLogos {
+    transform: translate3d(-130%, -50%, 0) rotate(0deg);
+}

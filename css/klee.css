@@ -1,0 +1,84 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    transition: background-color 10s linear;
+    overflow: hidden;
+}
+.blockframe {
+    position: inherit;
+    background-color: black;
+    padding: 0px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    transform: matrix3d(1,0,0,0,0,1,1,0,0,0,1,0,1,0,0,1);
+    transition: border 0.5s ease-in-out; 
+}
+.blockframe:hover {
+    cursor: pointer;
+    border-color: white;
+    border-width: 2px;
+}
+.block {
+    position: inherit;
+    width: inherit;
+    height: inherit;
+    z-index: 1;
+}
+.blockappear {
+    animation-name: boxappear;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+.shading {
+    position: inherit;
+    width: inherit;
+    height: inherit;
+    z-index: 3;
+}
+.texture {
+    position: inherit;
+    width: inherit;
+    height: inherit;
+    z-index: 4;
+    opacity: 0.5;
+    background-size: 1024px 773px;
+    background-image: url("../img/texture.png");
+}
+.hiddenpic {
+    display: none;
+}
+.twinkling {
+    animation-name: twinkle;
+    animation-duration: 2.0s;
+    animation-timing-function: ease-out;
+}
+#b999 {
+    animation-name: boxappear;
+    animation-duration: 5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes boxappear {
+    from { opacity: 0; transform: scale(0.6);}
+    to { opacity: 1; transform: scale(1.0);}
+}
+@keyframes twinkle {
+    0% { opacity: 1; }
+    10% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+#nullMenu {
+    background-color: green;
+}
+#nullLogo {
+    stroke: white;
+}

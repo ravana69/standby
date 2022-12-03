@@ -1,0 +1,82 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#displayRoot {
+    --altBackgroundOpacity: 0;
+    --sheetsVisibility : hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--displayBackground);
+}
+.canvas * {
+    position: inherit;
+}
+#altBackground {
+    width: 100%;
+    height: 100%;
+    opacity: var(--altBackgroundOpacity);
+    background: var(--altBackground);
+    transition: opacity var(--displayBackgroundPeriod) ease-in;
+}
+.frames {
+    top: 50%;
+    left: 50%;
+    overflow: visible;
+    opacity: var(--framesOpacity);
+    transform-origin: var(--framesTransformOriginX) var(--framesTransformOriginY);
+    transform: var(--framesRotate);
+    z-index: var(--framesZIndex);
+    /* transition: transform var(--transitionPeriod) linear, opacity var(--framesOpacityPeriod) ease-in var(--framesOpacityDelay); */
+    transition: transform var(--transitionPeriod) linear, opacity var(--framesOpacityPeriod) ease-in;
+}
+.sheets {
+    overflow: visible;
+    visibility: var(--sheetsVisibility);
+    transform: var(--sheetsScale) var(--sheetsRotate);
+}
+.sheets .patterns {
+    transform: translate3d(-50%, -50%, 0);
+}
+.sheets .dots, #burn, #mask {
+    width: var(--gapWidth);
+    height: var(--gapWidth);
+}
+.maps {
+    overflow: visible;
+    z-index: 0;
+}
+.sections {
+    top: var(--sectionTop);
+    left: var(--sectionLeft);
+    width: var(--sectionWidth);
+    height: var(--sectionWidth);
+    border-radius: 50%;
+    background: radial-gradient(transparent 50%, white);
+    transform: translate3d(-50%, -50%, 0);
+    opacity: 0;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: opacity 500ms ease-in;
+}
+.sections:hover {
+    opacity: 1;
+}
+.patterns {
+    width: var(--patternWidth);
+    height: var(--patternWidth);
+}
+#dotRoot {
+    width: var(--sectionWidth);
+    height: var(--sectionWidth);
+}
+#frameRoot, #patternRoot, .dots, #burn, #mask {
+    visibility: hidden;
+}
+#nullMenu {
+    background-color: hsl(40, 75%, 60%);
+}

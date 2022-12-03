@@ -1,0 +1,330 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#displayRoot {
+    position: absolute;
+    pointer-events: auto;
+    overflow: hidden;
+    --paintingScale: scale(1, 1);
+    --paintingReframeDuration: 0;
+    --imageTransform: translate(-50%, -50%);
+}
+#displayRoot, #wallpaper, #lighting {
+    width: 100%;
+    height: 100%;
+}
+#displayRoot * {
+    position: inherit;
+}
+#displayRoot > * {
+    pointer-events: none;
+}
+#wallpaper {
+    opacity: 0.3;
+    background-repeat: repeat;
+    background-size: 24px;
+}
+#lighting {
+    z-index: 2;
+    background-color: black;
+    transition: background-color 1s ease-out 1s;
+}
+#displayRoot.lightsOn > #lighting {
+    background-image: radial-gradient(farthest-corner at var(--lightingXY), transparent 0, transparent 40%, hsla(0, 0%, 0%, 0.7) 100%);
+    background-color: transparent;
+}
+#audioState {
+    right: 5vmin;
+    top: 5vmin;
+    width: 10vmin;
+    height: 10vmin;
+    background-color: white;
+    border-radius: 15%;
+    opacity: 0;
+    z-index: 3;
+    visibility: hidden;
+    transition: opacity 500ms ease-in;
+}
+#displayRoot:not(.freeze) > #audioState.reveal, #displayRoot:not(.freeze) > #audioState:hover {
+    pointer-events: auto;
+    cursor: pointer;
+    opacity: 0.3;
+}
+.audioImages {
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, -50%);
+}
+#audioState.active > #audioMuted {
+    visibility: hidden;
+}
+#audioState:not(.active) > #audioUnmuted {
+    visibility: hidden;
+}
+#label {
+    z-index: 2;
+    transition: opacity 300ms ease-in-out;
+}
+#label.invisible {
+    opacity: 0;
+}
+#labelPlate {
+    width: calc(var(--nameTextWidth) + 4em);
+    box-sizing: border-box;
+    border-style: solid;
+    border-image-source: url(../img/nameplate.png);
+    border-image-slice: 51% 11%;
+    pointer-events: auto;
+    cursor: default;
+    transform: translate(calc(var(--plateXOffset) - 50%), calc(var(--plateYOffset) - 50%));
+}
+#labelPlate > * {
+    pointer-events: none;
+}
+#labelContent {
+    left: 50%;
+    display: inline-flex;
+    transform: translate(-50%, -50%);
+}
+#labelContent > * {
+    position: relative;
+}
+#labelContent p {
+    margin: 0;
+    font-variant: small-caps;
+    white-space: nowrap;
+}
+#externalLink {
+    width: 0.7em;
+    margin-left: 1ex;
+    pointer-events: auto;
+}
+#externalLink img {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+}
+#labelPlate:hover ~ #labelControls, #labelControls:hover {
+    opacity: 1;
+}
+#labelControls {
+    left: 50%;
+    margin: 0;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    opacity: 0;
+    pointer-events: auto;
+    cursor: default;
+    transform: translate(calc(var(--controlsXOffset) - 50%), calc(var(--controlsYOffset) - 130%));
+    transition: opacity 300ms ease-out;
+}
+#labelControls p {
+    display: inline;
+    position: relative;
+    cursor: pointer;
+}
+#pinwheel {
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+#displayRoot.wait #pinwheel {
+    opacity: 0.5;
+}
+#displayRoot.wait #pinwheel0 {
+    animation: 2s ease-in-out rotate0 infinite forwards;
+}
+#displayRoot.wait #pinwheel1 {
+    animation: 2s ease-in-out rotate1 infinite forwards;
+}
+#pinwheel0, #pinwheel1 {
+    width: 15vmin;
+    transform: translate(-50%, -50%);
+}
+@keyframes rotate0 {
+    0% { transform: translate(-50%, -50%) rotate(0); }
+    90% { transform: translate(-50%, -50%) rotate(1turn); }
+    100% { transform: translate(-50%, -50%) rotate(1turn); }
+}
+@keyframes rotate1 {
+    0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    40% { opacity: 0.4; transform: translate(-50%, -50%) scale(0.8); }
+    80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+#credits {
+    right: 5%;
+    bottom: 5%;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 500ms ease-out 2500ms;
+}
+#displayRoot.lightsOn > #credits {
+    opacity: 0;
+}
+#credits p {
+    position: relative;
+    font-size: 2vmin;
+    text-align: center;
+    margin: 0;
+    color: gray;
+}
+#credits a {
+    position: relative;
+    pointer-events: auto;
+}
+#credits img {
+    width: 15vmin;
+    margin: 2vmin;
+}
+.paintings, #remnantRoot, .artImages, .borders, #museumIcon  {
+    visibility: hidden;
+}
+.paintings {
+    z-index: 1;
+}
+.bounce {
+    animation: calc(var(--paintingRotationDuration)/0.94) linear moveBounce forwards;
+}
+@keyframes moveBounce {
+    0% { transform: translateY(0) }
+    94% { transform: translateY(calc(var(--paintingYTranslate) * 1px)) }
+    97% { transform: translateY(calc((var(--paintingYTranslate) - 5) * 1px)) }
+    100% { transform: translateY(calc(var(--paintingYTranslate) * 1px)) }
+}
+.axes {
+    transform: var(--paintingRotation);
+    transition: transform var(--paintingRotationDuration) ease-in;
+}
+.frames {
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: transparent;
+    border-width: var(--paintingBorderWidth);
+    pointer-events: auto;
+    cursor: pointer;
+    transform: var(--paintingScale);
+    transition: transform var(--paintingRotationDuration) ease-in, border-width var(--paintingReframeDuration) ease-out, box-shadow var(--paintingRotationDuration) linear;
+}
+.frameBorders {
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: var(--paintingBorderWidth);
+    transform: translate(-50%, -50%);
+    transition: border-width var(--paintingReframeDuration) ease-out;
+}
+.frames > * {
+    pointer-events: none;
+}
+.corner0 > .frames {
+    transform-origin: top left;
+}
+.corner1 > .frames {
+    right: 0;
+    transform-origin: top right;
+}
+.corner2 > .frames {
+    bottom: 0;
+    right: 0;
+    transform-origin: bottom right;
+}
+.corner3 > .frames {
+    bottom: 0;
+    transform-origin: bottom left;
+}
+.border0 {
+    border-image-slice: 30.0% 30.0%;
+    border-image-repeat: repeat;
+}
+.border1 {
+    border-image-slice: 17.0% 19.5%;
+}
+.border2 {
+    border-image-slice: 18.2% 21%;
+}
+.border3 {
+    border-image-slice: 10.7% 13.1%;
+}
+.border4 {
+    border-image-slice: 14.9% 17.0%;
+}
+.border5 {
+    border-image-slice: 12.8% 10.9%;
+}
+.border6 {
+    border-image-slice: 30.0% 30.0%;
+    border-image-repeat: repeat;
+}
+.border7 {
+    border-image-slice: 29.0% 29.0%;
+    border-image-repeat: repeat;
+}
+.shadow0 {
+    box-shadow: 2px 20px 25px;
+}
+.shadow1 {
+    box-shadow: 20px -2px 25px;
+}
+.shadow2 {
+    box-shadow: -2px -20px 25px;
+}
+.shadow3 {
+    box-shadow: -20px 2px 25px;
+}
+.artworks, .artImages {
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+}
+.artworks {
+    transform: translate(-50%, -50%) scale(1.02);
+    overflow: hidden;
+}
+.framePlates {
+    width: 40%;
+    height: calc(var(--paintingBorderWidth)/2);
+    opacity: 0;
+    transform: translate(-50%, -50%) var(--namePlateRotation);
+    transition: opacity 500ms ease-in-out;
+}
+.side0 {
+    top: calc(100% + (var(--paintingBorderWidth)/2));
+    left: 50%;
+}
+.side1 {
+    top: 50%;
+    left: calc(100% + (var(--paintingBorderWidth)/2));
+}
+.side2 {
+    top: calc(var(--paintingBorderWidth)/-2);
+    left: 50%;
+}
+.side3 {
+    top: 50%;
+    left: calc(var(--paintingBorderWidth)/-2);
+}
+.remnants {
+    background-color: var(--remnantColor);
+    opacity: 0;
+    transition: opacity 1000ms ease-out 1000ms;
+}
+.artImages {
+    transform: var(--imageTransform) var(--imageRotation);
+}
+.imageReveal {
+    transition: transform var(--paintingRevealDuration) linear var(--paintingRevealDelay);
+}
+#nullMenu {
+    background-color: hsl(140, 35%, 60%);
+}

@@ -1,0 +1,60 @@
+html body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#displayRoot {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.canvas * {
+    position: inherit;
+    overflow: visible;
+    pointer-events: none;
+}
+#backgrounds {
+    top: 50%;
+    left: 50%;
+}
+#background, #activeBackground {
+    width: 100%;
+    height: 100%;
+    width: var(--backgroundWidth);
+    height: var(--backgroundHeight);
+    transform: translate(-50%, -50%);
+}
+#activeBackground {
+    opacity: 0;
+}
+#backgroundFilter {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    background: linear-gradient(hsla(0, 0%, 100%, 0.5), transparent 100%), linear-gradient(transparent 0%, black 100%);
+}
+#shapeRoot, #pattern, #splatCircle {
+    visibility: hidden;
+}
+.shapeFrames {
+    bottom: 0;
+    width: var(--shapesWidth);
+    height: var(--shapesWidth);
+    transition: opacity 0.2s ease-out;
+}
+.shapes {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    transform-origin: bottom center;
+    pointer-events: auto;
+    cursor: pointer;
+}
+.shrunk {
+    transform: scale(0);
+}
+#pattern {
+    width: var(--patternWidth);
+    height: var(--patternWidth);
+}
